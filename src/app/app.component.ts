@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FooterComponent } from './main/footer/footer.component';
+import { QuoteComponent } from './main/quote/quote.component';
 
 @Component({
   selector: 'app-root',
