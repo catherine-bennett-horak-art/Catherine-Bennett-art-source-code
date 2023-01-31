@@ -1,0 +1,37 @@
+{
+    "delivery": {
+        "cost": 200
+    },
+    "costing": [
+        {
+            "size": "A6",
+            "base-cost": 550,
+            "cost-per-additional-figure": 60,
+            "frame-costs": [
+                {
+                    "description": "no-frame",
+                    "cost" : 0
+                },
+                {
+                    "description": "floating-frame",
+                    "cost" : 460
+                }
+            ]
+        },
+        {
+            "size": "A5",
+            "base-cost": 550,
+            "cost-per-additional-figure": 60,
+            "frame-costs": [
+                {
+                    "description": "no-frame",
+                    "cost" : 0
+                },
+                {
+                    "description": "floating-frame",
+                    "cost" : 460
+                }
+            ]
+        }
+    ]
+}

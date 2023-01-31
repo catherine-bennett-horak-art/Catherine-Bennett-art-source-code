@@ -1,0 +1,134 @@
+<br>
+<div class="card">
+
+    <mat-accordion class="" multi>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <br><br>
+                    <h3 class="display-5">Generate quote</h3>
+                    <br><br><br><br><br>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form class="container">
+                <mat-label class="p-2" for="name">Name </mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput id="name" class="form-control" type="text"
+                        placeholder="Name" id="name" />
+                </mat-form-field>
+                <mat-label class="p-2" for="number-of-subjects">Subjects </mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput id="number-of-subjects" class="form-control" type="number" min="1"
+                        placeholder="Enter number of subjects" id="numberOfSubjects" />
+                </mat-form-field>
+
+                <mat-label class="p-2" for="artwork-size">Size </mat-label>
+                <mat-form-field appearance="outline">
+                    <select id="sizeSelect" (change)="sizeChosen()" matNativeControl required>
+                        <option></option>
+                        <option *ngFor="let size of sizes" value="{{ size }}">{{size}}</option>
+                    </select>
+                </mat-form-field>
+                <div *ngIf="isChosen">
+                    <mat-label class="p-2">Frame design </mat-label>
+                    <mat-form-field appearance="outline">
+                        <select id="frameSelect" (change)="frameChosen()" matNativeControl required>
+                            <option></option>
+                            <option *ngFor="let frame of frameOptions" value="{{ frame }}">{{frame}}</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+
+                <mat-checkbox id="deliveryCheckbox" [checked]="delivery" (click)="deliveryToggle()">Do you require
+                    delivery</mat-checkbox>
+                <button mat-raised-button (click)="generateQuote()" id="generateQuoteButton"
+                    [disabled]="!buttonActive">Generate Quote</button>
+
+                <button mat-raised-button (click)="generateQuoteDoc()" id="generateQuoteButton"
+                    [disabled]="!quoteAvailable">Download Quote</button>    
+
+            </form>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <mat-accordion *ngIf="quoteAvailable">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <br><br>
+                    <h3 class="display-5">Quote</h3>
+                    <br><br><br><br><br>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <div>
+                <div class="row">
+                    <mat-grid-list cols="2" rowHeight="50px">
+                        <mat-grid-tile >
+                            <mat-grid-tile-header>Description</mat-grid-tile-header>
+                        </mat-grid-tile>
+                        <mat-grid-tile >
+                            <mat-grid-tile-header>Total Cost</mat-grid-tile-header>
+                        </mat-grid-tile>
+
+                        <div *ngFor="let quote of quotes">
+                            <mat-grid-tile >
+                                <label class="p-2" type="text"> {{ quote.portraitSize }} | {{ quote.amountOfSubjects }} subject</label>
+                            </mat-grid-tile>
+                            <mat-grid-tile >
+                                <div>
+                                    <label class="p-2" id="totalCost" type="text"> {{ quote.baseCost }}</label>
+                                </div>
+                            </mat-grid-tile>
+    
+                            <mat-grid-tile >
+                                <label class="p-2" type="text"> {{ quote.frameChosen }}</label>
+                            </mat-grid-tile>
+                            <mat-grid-tile >
+                                <div>
+                                    <label class="p-2" id="totalCost" type="text"> {{ quote.frameCost }}</label>
+                                </div>
+                            </mat-grid-tile>
+                            
+                            <mat-grid-tile >
+                                <h6 class="p-2">Item cost</h6>
+                            </mat-grid-tile>
+                            <mat-grid-tile >
+                                <div>
+                                    <label class="p-2" id="totalCost" type="text"> {{ quote.totalCost }}</label>
+                                </div>
+                            </mat-grid-tile>
+                        </div>
+                        <mat-grid-tile >
+                            <label class="p-2" type="text"> {{ deliveryString }}</label>
+                        </mat-grid-tile>
+                        <mat-grid-tile >
+                            <div>
+                                <label class="p-2" id="totalCost" type="text"> {{ deliveryCost }}</label>
+                            </div>
+                        </mat-grid-tile>
+                        
+                        <mat-grid-tile >
+                            <h6 class="p-2">Total cost</h6>
+                        </mat-grid-tile>
+                        <mat-grid-tile >
+                            <div>
+                                <label class="p-2" id="totalCost" type="text"> {{ cost }}</label>
+                            </div>
+                        </mat-grid-tile>
+
+                        
+                    </mat-grid-list>
+                </div>
+
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
