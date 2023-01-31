@@ -20,6 +20,7 @@ import { WelcomeBlockComponent } from './main/welcome-block/welcome-block.compon
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
 import {MatGridListModule} from '@angular/material/grid-list';
+import { FileSaverModule } from 'ngx-filesaver';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCheckboxModule,
     FormsModule,
     CommonModule,
-    MatGridListModule
+    MatGridListModule,
+    FileSaverModule
   ],
   providers: [],
   bootstrap: [AppComponent]
